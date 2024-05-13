@@ -1,6 +1,7 @@
 package edu.mfvp.javaspringecommerce.domain.user.usecases;
 
 import edu.mfvp.javaspringecommerce.domain.user.entities.User;
+import edu.mfvp.javaspringecommerce.domain.user.exceptions.UserEmailAlreadyExists;
 import edu.mfvp.javaspringecommerce.domain.user.gateways.UserRepositoryGateway;
 import edu.mfvp.javaspringecommerce.domain.user.usecases.impl.CreateUserUseCaseImpl;
 import org.instancio.Instancio;
@@ -32,6 +33,17 @@ public class CreateUserUseCaseTest {
         assertEquals(user, userCreated);
         verify(userRepositoryGateway).existsByEmail(user.getEmail());
         verify(userRepositoryGateway).create(user);
+        verifyNoMoreInteractions(userRepositoryGateway);
+    }
+
+    @Test
+    public void shouldNotBeAbleToCreateAUserIfEmailAlreadyExists() {
+        var user = Instancio.create(User.class);
+        when(userRepositoryGateway.existsByEmail(user.getEmail())).thenReturn(true);
+
+        assertThrows(UserEmailAlreadyExists.class, () -> createUserUseCase.execute(user));
+
+        verify(userRepositoryGateway).existsByEmail(user.getEmail());
         verifyNoMoreInteractions(userRepositoryGateway);
     }
 }
