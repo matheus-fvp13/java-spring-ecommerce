@@ -1,5 +1,6 @@
 package edu.mfvp.javaspringecommerce.infrastructure.persistence.user.entities;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 import jakarta.persistence.Column;
@@ -10,6 +11,7 @@ import jakarta.persistence.Id;
 
 @Entity(name = "users")
 public class UserEntity implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
