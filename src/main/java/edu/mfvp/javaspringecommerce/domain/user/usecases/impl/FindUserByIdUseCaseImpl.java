@@ -15,7 +15,7 @@ public class FindUserByIdUseCaseImpl implements FindUserByIdUseCase{
     @Override
     public User execute(Long id) {
         return userRepositoryGateway.findById(id)
-            .orElseThrow(() -> new UserNotFoundException("User with id " + id + " was not found"));
+            .orElseThrow(() -> new UserNotFoundException("User with id " + id + " was not found."));
     }
 
 }
