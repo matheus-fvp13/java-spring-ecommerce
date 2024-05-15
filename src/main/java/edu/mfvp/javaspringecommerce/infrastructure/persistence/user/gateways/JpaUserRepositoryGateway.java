@@ -1,5 +1,6 @@
 package edu.mfvp.javaspringecommerce.infrastructure.persistence.user.gateways;
 
+import java.util.List;
 import java.util.Optional;
 
 import edu.mfvp.javaspringecommerce.domain.user.entities.User;
@@ -21,4 +22,10 @@ public class JpaUserRepositoryGateway implements UserRepositoryGateway {
     public Optional<User> findById(Long id) {
         return Optional.empty();
     }
+
+    @Override
+    public List<User> findAll() {
+        return List.of();
+    }
+
 }
