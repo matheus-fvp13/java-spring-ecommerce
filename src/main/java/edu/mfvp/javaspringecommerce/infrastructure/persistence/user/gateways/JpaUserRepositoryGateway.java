@@ -5,12 +5,22 @@ import java.util.Optional;
 
 import edu.mfvp.javaspringecommerce.domain.user.entities.User;
 import edu.mfvp.javaspringecommerce.domain.user.gateways.UserRepositoryGateway;
+import edu.mfvp.javaspringecommerce.infrastructure.persistence.user.mapper.UserMapper;
+import edu.mfvp.javaspringecommerce.infrastructure.persistence.user.repositories.JpaUserRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class JpaUserRepositoryGateway implements UserRepositoryGateway {
+    private final JpaUserRepository repository;
+
+    public JpaUserRepositoryGateway(JpaUserRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public User create(User user) {
-        return null;
+        var userEntity = repository.save(UserMapper.toUserEntity(user));
+        return UserMapper.toUser(userEntity);
     }
 
     @Override
