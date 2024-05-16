@@ -30,7 +30,8 @@ public class JpaUserRepositoryGateway implements UserRepositoryGateway {
 
     @Override
     public Optional<User> findById(Long id) {
-        return Optional.empty();
+        var optionalUser = repository.findById(id);
+        return optionalUser.map(UserMapper::toUser);
     }
 
     @Override
