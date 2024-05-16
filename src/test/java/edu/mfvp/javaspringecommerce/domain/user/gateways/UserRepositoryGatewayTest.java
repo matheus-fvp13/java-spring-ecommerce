@@ -33,4 +33,13 @@ public abstract class UserRepositoryGatewayTest {
         Assertions.assertTrue(result.isPresent());
         Assertions.assertEquals(savedUser.getId(), result.get().getId());
     }
+
+    @Test
+    public void shouldNotFindUserByIdIfNotExists() {
+        var user = Instancio.create(User.class);
+
+        var result = getUserRepositoryGateway().findById(user.getId());
+
+        Assertions.assertFalse(result.isPresent());
+    }
 }
