@@ -1,6 +1,5 @@
 package edu.mfvp.javaspringecommerce.infrastructure.api.user.controllers;
 
-import edu.mfvp.javaspringecommerce.domain.user.usecases.FindAllUsersUseCase;
 import edu.mfvp.javaspringecommerce.domain.user.usecases.FindUserByIdUseCase;
 import edu.mfvp.javaspringecommerce.infrastructure.api.user.response.UserResponse;
 import org.springframework.http.ResponseEntity;
