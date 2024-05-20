@@ -2,7 +2,9 @@ package edu.mfvp.javaspringecommerce.infrastructure.config;
 
 import edu.mfvp.javaspringecommerce.domain.user.gateways.UserRepositoryGateway;
 import edu.mfvp.javaspringecommerce.domain.user.usecases.FindAllUsersUseCase;
+import edu.mfvp.javaspringecommerce.domain.user.usecases.FindUserByIdUseCase;
 import edu.mfvp.javaspringecommerce.domain.user.usecases.impl.FindAllUsersUseCaseImpl;
+import edu.mfvp.javaspringecommerce.domain.user.usecases.impl.FindUserByIdUseCaseImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,4 +15,10 @@ public class UserConfig {
     FindAllUsersUseCase getFindAllUsersUseCase(UserRepositoryGateway gateway) {
         return new FindAllUsersUseCaseImpl(gateway);
     }
+
+    @Bean
+    FindUserByIdUseCase getFindUserByIdUseCase(UserRepositoryGateway gateway) {
+        return new FindUserByIdUseCaseImpl(gateway);
+    }
+
 }

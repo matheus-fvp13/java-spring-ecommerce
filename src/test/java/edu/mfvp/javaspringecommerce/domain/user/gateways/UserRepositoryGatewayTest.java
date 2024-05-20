@@ -1,6 +1,7 @@
 package edu.mfvp.javaspringecommerce.domain.user.gateways;
 
 import edu.mfvp.javaspringecommerce.domain.user.entities.User;
+import edu.mfvp.javaspringecommerce.infrastructure.persistence.user.mapper.UserMapper;
 import org.instancio.Instancio;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -41,5 +42,14 @@ public abstract class UserRepositoryGatewayTest {
         var result = getUserRepositoryGateway().findById(user.getId());
 
         Assertions.assertFalse(result.isPresent());
+    }
+
+    @Test
+    public void shouldFindAllUsers() {
+        var userList = Instancio.stream(User.class).limit(5).toList();
+        var userSchemaList = userList.stream().map(UserMapper::toUserEntity).toList();
+        userSchemaList.forEach(u -> u.setId(null));
+
+        //getUserRepositoryGateway().create();
     }
 }
