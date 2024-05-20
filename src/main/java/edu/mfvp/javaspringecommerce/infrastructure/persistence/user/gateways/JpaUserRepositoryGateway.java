@@ -36,7 +36,10 @@ public class JpaUserRepositoryGateway implements UserRepositoryGateway {
 
     @Override
     public List<User> findAll() {
-        return List.of();
+        return repository.findAll()
+                .stream()
+                .map(UserMapper::toUser)
+                .toList();
     }
 
 }
