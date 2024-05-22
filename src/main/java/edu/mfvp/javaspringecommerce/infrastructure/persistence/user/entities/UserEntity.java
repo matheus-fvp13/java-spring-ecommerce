@@ -2,12 +2,11 @@ package edu.mfvp.javaspringecommerce.infrastructure.persistence.user.entities;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import edu.mfvp.javaspringecommerce.infrastructure.persistence.order.entities.OrderEntity;
+import jakarta.persistence.*;
 
 @Entity(name = "users")
 public class UserEntity implements Serializable {
@@ -29,6 +28,9 @@ public class UserEntity implements Serializable {
 
     @Column(nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    private List<OrderEntity> orderEntities = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -68,6 +70,10 @@ public class UserEntity implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<OrderEntity> getOrderEntities() {
+        return orderEntities;
     }
 
     @Override
