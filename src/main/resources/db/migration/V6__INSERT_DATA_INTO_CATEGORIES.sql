@@ -1,0 +1,10 @@
+INSERT INTO categories (name) VALUES ('Electronics');
+INSERT INTO categories (name) VALUES ('Books');
+INSERT INTO categories (name) VALUES ('Clothing');
+INSERT INTO categories (name) VALUES ('Home & Kitchen');
+INSERT INTO categories (name) VALUES ('Toys & Games');
+INSERT INTO categories (name) VALUES ('Sports & Outdoors');
+INSERT INTO categories (name) VALUES ('Beauty & Personal Care');
+INSERT INTO categories (name) VALUES ('Automotive');
+INSERT INTO categories (name) VALUES ('Health & Household');
+INSERT INTO categories (name) VALUES ('Grocery & Gourmet Food');
