@@ -1,7 +1,6 @@
 package edu.mfvp.javaspringecommerce.infrastructure.persistence.category.mappers;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Component;
 
 import edu.mfvp.javaspringecommerce.domain.category.entities.Category;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.category.entities.CategoryEntity;

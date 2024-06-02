@@ -5,7 +5,6 @@ import edu.mfvp.javaspringecommerce.domain.category.gateways.CategoryRepositoryG
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.category.mappers.CategoryMapper;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.category.repositories.JpaCategoryRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @AllArgsConstructor
 public class JpaCategoryRepositoryGateway implements CategoryRepositoryGateway {
