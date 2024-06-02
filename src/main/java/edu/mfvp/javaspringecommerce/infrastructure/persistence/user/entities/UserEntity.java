@@ -1,13 +1,16 @@
 package edu.mfvp.javaspringecommerce.infrastructure.persistence.user.entities;
 
+import edu.mfvp.javaspringecommerce.infrastructure.persistence.order.entities.OrderEntity;
+import jakarta.persistence.*;
+import lombok.*;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.mfvp.javaspringecommerce.infrastructure.persistence.order.entities.OrderEntity;
-import jakarta.persistence.*;
-
+@Getter
+@Setter
 @Entity(name = "users")
 public class UserEntity implements Serializable {
     @Serial
@@ -30,51 +33,8 @@ public class UserEntity implements Serializable {
     private String password;
 
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    @ToString.Exclude
     private List<OrderEntity> orderEntities = new ArrayList<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public List<OrderEntity> getOrderEntities() {
-        return orderEntities;
-    }
 
     @Override
     public int hashCode() {

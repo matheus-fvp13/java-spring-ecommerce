@@ -2,11 +2,16 @@ package edu.mfvp.javaspringecommerce.infrastructure.persistence.order.entities;
 
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.user.entities.UserEntity;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.Objects;
 
+@Setter
+@Getter
 @Entity(name = "orders")
 public class OrderEntity implements Serializable {
     @Serial
@@ -21,27 +26,16 @@ public class OrderEntity implements Serializable {
     @JoinColumn(name = "client_id")
     private UserEntity client;
 
-    public Long getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        OrderEntity that = (OrderEntity) o;
+        return Objects.equals(id, that.id);
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Instant getMoment() {
-        return moment;
-    }
-
-    public void setMoment(Instant moment) {
-        this.moment = moment;
-    }
-
-    public UserEntity getClient() {
-        return client;
-    }
-
-    public void setClient(UserEntity client) {
-        this.client = client;
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
