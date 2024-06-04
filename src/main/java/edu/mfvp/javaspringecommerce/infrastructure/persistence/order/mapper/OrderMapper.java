@@ -9,6 +9,7 @@ public class OrderMapper {
         var order = new Order();
         order.setId(orderEntity.getId());
         order.setMoment(orderEntity.getMoment());
+        order.setOrderStatus(orderEntity.getOrderStatus());
         order.setClient(UserMapper.toUser(orderEntity.getClient()));
 
         return order;

@@ -1,5 +1,6 @@
 package edu.mfvp.javaspringecommerce.domain.order.entities;
 
+import edu.mfvp.javaspringecommerce.domain.order.entities.enums.OrderStatus;
 import edu.mfvp.javaspringecommerce.domain.user.entities.User;
 
 import java.time.Instant;
@@ -9,6 +10,7 @@ public class Order {
 
     private Long id;
     private Instant moment;
+    private OrderStatus orderStatus;
     private User client;
 
     public Long getId() {
@@ -25,6 +27,14 @@ public class Order {
 
     public void setMoment(Instant moment) {
         this.moment = moment;
+    }
+
+    public OrderStatus getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public User getClient() {

@@ -1,5 +1,6 @@
 package edu.mfvp.javaspringecommerce.infrastructure.persistence.order.entities;
 
+import edu.mfvp.javaspringecommerce.domain.order.entities.enums.OrderStatus;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.user.entities.UserEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,9 +24,19 @@ public class OrderEntity implements Serializable {
 
     private Instant moment;
 
+    private Integer orderStatus;
+
     @ManyToOne
     @JoinColumn(name = "client_id")
     private UserEntity client;
+
+    public OrderStatus getOrderStatus() {
+        return OrderStatus.valueOf(orderStatus);
+    }
+
+    public void setOrderStatus(OrderStatus orderStatus) {
+        this.orderStatus = orderStatus.getCode();
+    }
 
     @Override
     public boolean equals(Object o) {
