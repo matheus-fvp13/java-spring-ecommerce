@@ -4,6 +4,7 @@ import edu.mfvp.javaspringecommerce.domain.user.entities.User;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.user.entities.UserEntity;
 
 public class UserMapper {
+
     public static User toUser(UserEntity userEntity) {
         var user = new User();
         user.setId(userEntity.getId());
@@ -11,6 +12,7 @@ public class UserMapper {
         user.setEmail(userEntity.getEmail());
         user.setPhone(userEntity.getPhone());
         user.setPassword(userEntity.getPassword());
+
         return user;
     }
 

@@ -32,8 +32,7 @@ public class UserEntity implements Serializable {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
-    @ToString.Exclude
+    @OneToMany(mappedBy = "client")
     private List<OrderEntity> orderEntities = new ArrayList<>();
 
     @Override

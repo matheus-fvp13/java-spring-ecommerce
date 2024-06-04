@@ -1,10 +1,5 @@
 package edu.mfvp.javaspringecommerce.domain.user.entities;
 
-import edu.mfvp.javaspringecommerce.domain.order.entities.Order;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class User {
     
     private Long id;
@@ -12,8 +7,6 @@ public class User {
     private String email;
     private String phone;
     private String password;
-
-    private List<Order> orders = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -53,10 +46,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public List<Order> getOrders() {
-        return orders;
     }
 
     @Override
