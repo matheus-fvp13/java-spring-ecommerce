@@ -8,13 +8,12 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class JpaCategoryRepositoryGateway implements CategoryRepositoryGateway {
-    private final CategoryMapper categoryMapper;
     private final JpaCategoryRepository categoryRepository;
 
     @Override
     public Category create(Category category) {
-        var categoryEntity = categoryRepository.save(categoryMapper.convertToCategoryEntity(category)); 
-        return categoryMapper.convertToCategory(categoryEntity);
+        var categoryEntity = categoryRepository.save(CategoryMapper.toCategoryEntity(category)); 
+        return CategoryMapper.toCategory(categoryEntity);
     }
 
     @Override

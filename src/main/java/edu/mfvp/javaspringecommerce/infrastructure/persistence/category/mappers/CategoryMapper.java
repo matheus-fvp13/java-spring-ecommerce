@@ -1,22 +1,22 @@
 package edu.mfvp.javaspringecommerce.infrastructure.persistence.category.mappers;
 
-import org.modelmapper.ModelMapper;
-
 import edu.mfvp.javaspringecommerce.domain.category.entities.Category;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.category.entities.CategoryEntity;
 
 public class CategoryMapper {
-    private final ModelMapper modelMapper;
-    
-    public CategoryMapper(ModelMapper modelMapper) {
-        this.modelMapper = modelMapper;
+
+    public static CategoryEntity toCategoryEntity(Category category) {
+        var entity = new CategoryEntity();
+        entity.setId(category.getId());
+        entity.setName(category.getName());
+        return entity;
     }
 
-    public CategoryEntity convertToCategoryEntity(Category category) {
-        return modelMapper.map(category, CategoryEntity.class);
-    }
-
-    public Category convertToCategory(CategoryEntity categoryEntity) {
-        return modelMapper.map(categoryEntity, Category.class);
+    public static Category toCategory(CategoryEntity categoryEntity) {
+        var category = new Category();
+        category.setId(categoryEntity.getId());
+        category.setName(categoryEntity.getName());
+        return category;
     } 
+    
 }
