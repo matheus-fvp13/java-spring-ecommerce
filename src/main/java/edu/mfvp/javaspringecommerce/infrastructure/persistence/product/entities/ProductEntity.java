@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.AccessLevel;
@@ -24,12 +25,13 @@ public class ProductEntity {
     private String name;
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
-    @Column(nullable = false, precision = 10, scale = 2)
-    private Double price;
     @Column(nullable = false)
+    private Double price;
+    @Column(nullable = false, name = "img_url")
     private String imgUrl;
 
     @Setter(AccessLevel.NONE)
+    @Transient
     private Set<CategoryEntity> categories = new HashSet<>();
 
     @Override
