@@ -1,6 +1,7 @@
 package edu.mfvp.javaspringecommerce.infrastructure.persistence.order.entities;
 
 import edu.mfvp.javaspringecommerce.domain.order.entities.enums.OrderStatus;
+import edu.mfvp.javaspringecommerce.infrastructure.persistence.order_item.entities.OrderItemEntity;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.user.entities.UserEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,7 +10,10 @@ import lombok.Setter;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+import lombok.AccessLevel;
 
 @Setter
 @Getter
@@ -29,6 +33,10 @@ public class OrderEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private UserEntity client;
+
+    @Setter(AccessLevel.NONE)
+    @OneToMany(mappedBy = "id.order")
+    private Set<OrderItemEntity> items = new HashSet<>();
 
     public OrderStatus getOrderStatus() {
         return OrderStatus.valueOf(orderStatus);
