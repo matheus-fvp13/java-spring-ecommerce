@@ -2,6 +2,7 @@ package edu.mfvp.javaspringecommerce.infrastructure.persistence.order.entities;
 
 import edu.mfvp.javaspringecommerce.domain.order.entities.enums.OrderStatus;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.order_item.entities.OrderItemEntity;
+import edu.mfvp.javaspringecommerce.infrastructure.persistence.payment.entities.PaymentEntity;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.user.entities.UserEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -33,6 +34,9 @@ public class OrderEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private UserEntity client;
+
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    private PaymentEntity payment;
 
     @Setter(AccessLevel.NONE)
     @OneToMany(mappedBy = "id.order")
