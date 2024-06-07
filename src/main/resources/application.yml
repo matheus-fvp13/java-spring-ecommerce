@@ -5,4 +5,7 @@ spring:
         active: test
     jpa:
         open-in-view: true
+    mvc:
+        servlet:
+            path: /ecommerce/api/v1
         

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/users")
 public class FindAllUsersController {
     private final FindAllUsersUseCase findAllUsersUseCase;
 

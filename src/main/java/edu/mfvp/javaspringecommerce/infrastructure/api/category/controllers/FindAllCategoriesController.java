@@ -11,7 +11,7 @@ import edu.mfvp.javaspringecommerce.domain.category.usecases.FindAllCategoriesUs
 import edu.mfvp.javaspringecommerce.infrastructure.api.category.response.CategoryResponse;
 
 @RestController
-@RequestMapping("/api/v1/categories")
+@RequestMapping("/categories")
 public class FindAllCategoriesController {
     private final FindAllCategoriesUseCase findAllCategoriesUseCase;
 

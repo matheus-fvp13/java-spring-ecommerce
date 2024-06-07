@@ -11,7 +11,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 @RestController
-@RequestMapping("/api/v1/orders")
+@RequestMapping("/orders")
 public class FindAllOrdersController {
     private final FindAllOrdersUseCase findAllOrdersUseCase;
 

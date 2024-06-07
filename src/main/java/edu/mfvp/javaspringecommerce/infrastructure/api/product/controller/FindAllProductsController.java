@@ -11,7 +11,7 @@ import edu.mfvp.javaspringecommerce.domain.product.usecases.FindAllProductsUseCa
 import edu.mfvp.javaspringecommerce.infrastructure.api.product.response.ProductResponse;
 
 @RestController
-@RequestMapping("api/v1/products")
+@RequestMapping("/products")
 public class FindAllProductsController {
     private final FindAllProductsUseCase findAllProductsUseCase;
 

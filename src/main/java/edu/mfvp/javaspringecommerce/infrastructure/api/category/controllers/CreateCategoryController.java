@@ -3,7 +3,7 @@ package edu.mfvp.javaspringecommerce.infrastructure.api.category.controllers;
 import java.net.URI;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +21,7 @@ public class CreateCategoryController {
         this.createCategoryUseCase = createCategoryUseCase;
     }
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity<Void> create(@RequestBody CategoryRequest categoryRequest, UriComponentsBuilder ucb) {
         var category = createCategoryUseCase.execute(categoryRequest.toCategory());
         URI uri = ucb.path("/categories/{id}").buildAndExpand(category.id()).toUri();
