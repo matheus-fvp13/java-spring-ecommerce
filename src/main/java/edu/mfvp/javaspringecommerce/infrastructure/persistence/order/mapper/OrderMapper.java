@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import edu.mfvp.javaspringecommerce.domain.order.entities.Order;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.order.entities.OrderEntity;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.order_item.mappers.OrderItemMapper;
+import edu.mfvp.javaspringecommerce.infrastructure.persistence.payment.mappers.PaymentMapper;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.user.mapper.UserMapper;
 
 public class OrderMapper {
@@ -18,6 +19,7 @@ public class OrderMapper {
             orderEntity.getMoment(),
             orderEntity.getOrderStatus(),
             UserMapper.toUser(orderEntity.getClient()),
+            PaymentMapper.toPayment(orderEntity.getPayment()),
             items
         );
     }
