@@ -1,5 +1,7 @@
 package edu.mfvp.javaspringecommerce.infrastructure.persistence.category.gateways;
 
+import java.util.List;
+
 import edu.mfvp.javaspringecommerce.domain.category.entities.Category;
 import edu.mfvp.javaspringecommerce.domain.category.gateways.CategoryRepositoryGateway;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.category.mappers.CategoryMapper;
@@ -19,6 +21,13 @@ public class JpaCategoryRepositoryGateway implements CategoryRepositoryGateway {
     @Override
     public boolean existsByName(String name) {
         return categoryRepository.existsByName(name);
+    }
+
+    @Override
+    public List<Category> findAll() {
+        return categoryRepository.findAll().stream()
+                .map(CategoryMapper::toCategory)
+                .toList();
     }
 
 }

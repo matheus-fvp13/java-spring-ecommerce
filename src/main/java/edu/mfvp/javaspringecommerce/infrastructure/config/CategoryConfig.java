@@ -2,7 +2,9 @@ package edu.mfvp.javaspringecommerce.infrastructure.config;
 
 import edu.mfvp.javaspringecommerce.domain.category.gateways.CategoryRepositoryGateway;
 import edu.mfvp.javaspringecommerce.domain.category.usecases.CreateCategoryUseCase;
+import edu.mfvp.javaspringecommerce.domain.category.usecases.FindAllCategoriesUseCase;
 import edu.mfvp.javaspringecommerce.domain.category.usecases.impl.CreateCategoryUseCaseImpl;
+import edu.mfvp.javaspringecommerce.domain.category.usecases.impl.FindAllCategoryUseCaseImpl;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.category.gateways.JpaCategoryRepositoryGateway;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.category.repositories.JpaCategoryRepository;
 import org.springframework.context.annotation.Bean;
@@ -19,5 +21,10 @@ public class CategoryConfig {
     @Bean
     CreateCategoryUseCase getCreateCategoryUseCase(CategoryRepositoryGateway gateway) {
         return new CreateCategoryUseCaseImpl(gateway);
+    }
+
+    @Bean 
+    FindAllCategoriesUseCase getFindAllCategoriesUseCase(CategoryRepositoryGateway gateway) {
+        return new FindAllCategoryUseCaseImpl(gateway);
     }
 }
