@@ -24,7 +24,7 @@ public class CreateCategoryController {
     @GetMapping
     public ResponseEntity<Void> create(@RequestBody CategoryRequest categoryRequest, UriComponentsBuilder ucb) {
         var category = createCategoryUseCase.execute(categoryRequest.toCategory());
-        URI uri = ucb.path("/categories/{id}").buildAndExpand(category.getId()).toUri();
+        URI uri = ucb.path("/categories/{id}").buildAndExpand(category.id()).toUri();
         return ResponseEntity.created(uri).build();
     }
 }

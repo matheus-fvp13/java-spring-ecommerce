@@ -6,8 +6,9 @@ public record CategoryRequest(
     String name
 ) {
     public Category toCategory() {
-        var category = new Category();
-        category.setName(name());
-        return category;
+        return  new Category(
+            null,
+            name()
+        );
     }
 }

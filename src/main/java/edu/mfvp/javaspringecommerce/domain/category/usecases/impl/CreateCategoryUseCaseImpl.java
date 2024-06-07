@@ -14,8 +14,8 @@ public class CreateCategoryUseCaseImpl implements CreateCategoryUseCase {
 
     @Override
     public Category execute(Category category) {
-        if(categoryRepositoryGateway.existsByName(category.getName())) 
-            throw new CategoryNameAlreadyExistsException(category.getName());
+        if(categoryRepositoryGateway.existsByName(category.name())) 
+            throw new CategoryNameAlreadyExistsException(category.name());
         return categoryRepositoryGateway.create(category);
     }
 

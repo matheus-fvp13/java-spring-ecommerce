@@ -17,7 +17,7 @@ public record ProductResponse(
     public static ProductResponse fromDomain(Product product) {
         var categories = product.categories()
             .stream()
-            .map(Category::getName)
+            .map(Category::name)
             .collect(Collectors.toSet());
 
         return new ProductResponse(

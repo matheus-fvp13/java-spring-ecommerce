@@ -7,16 +7,16 @@ public class CategoryMapper {
 
     public static CategoryEntity toCategoryEntity(Category category) {
         var entity = new CategoryEntity();
-        entity.setId(category.getId());
-        entity.setName(category.getName());
+        entity.setId(category.id());
+        entity.setName(category.name());
         return entity;
     }
 
     public static Category toCategory(CategoryEntity categoryEntity) {
-        var category = new Category();
-        category.setId(categoryEntity.getId());
-        category.setName(categoryEntity.getName());
-        return category;
+        return new Category(
+            categoryEntity.getId(),
+            categoryEntity.getName()
+        );
     } 
     
 }
