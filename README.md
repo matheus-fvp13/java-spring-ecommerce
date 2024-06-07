@@ -1,5 +1,5 @@
 # Ecommerce API REST
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/matheus-fvp13/java-ecommerce/blob/main/LICENSE)
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/matheus-fvp13/java-spring-ecommerce/blob/main/LICENSE)
 
 # Sobre o projeto
 Esse projeto é uma aplicação de comércio eletrônico que busca utilizar a arquitetura de software hexagonal para garantir
