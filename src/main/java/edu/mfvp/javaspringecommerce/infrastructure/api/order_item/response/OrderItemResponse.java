@@ -6,7 +6,8 @@ public record OrderItemResponse(
     Long productId,
     String productName,
     Integer quantity,
-    Double price
+    Double price,
+    Double subTotal
 ) {
 
     public static OrderItemResponse fromDomain(OrderItem orderItem) {
@@ -14,7 +15,8 @@ public record OrderItemResponse(
             orderItem.product().id(),
             orderItem.product().name(),
             orderItem.quantity(),
-            orderItem.price()
+            orderItem.price(),
+            orderItem.getSubTotal()
         );
     }
 

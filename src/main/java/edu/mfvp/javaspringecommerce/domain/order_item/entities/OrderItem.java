@@ -8,4 +8,8 @@ public record OrderItem(
     Double price
 ) {
 
+    public Double getSubTotal() {
+        return quantity * price;
+    }
+
 }

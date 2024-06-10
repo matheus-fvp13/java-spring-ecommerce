@@ -17,4 +17,10 @@ public record Order(
     Optional<Payment> payment,
     Set<OrderItem> items
 ) {
+
+    public Double getTotal() {
+        return items.stream()
+            .mapToDouble(OrderItem::getSubTotal)
+            .sum();
+    }
 }

@@ -17,7 +17,8 @@ public record OrderResponse(
     String clientEmail,
     OrderStatus orderStatus,
     Optional<PaymentResponse> payment,
-    Set<OrderItemResponse> items
+    Set<OrderItemResponse> items,
+    Double total
 ) {
 
     public static OrderResponse fromDomain(Order order) {
@@ -32,7 +33,8 @@ public record OrderResponse(
             order.client().getEmail(),
             order.orderStatus(),
             PaymentResponse.fromDomain(order.payment()),
-            items
+            items,
+            order.getTotal()
         );
     }
 
