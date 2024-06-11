@@ -1,18 +1,20 @@
 package edu.mfvp.javaspringecommerce.infrastructure.persistence.user.entities;
 
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.order.entities.OrderEntity;
+import edu.mfvp.javaspringecommerce.infrastructure.persistence.role.RoleEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Getter
 @Setter
 @Entity(name = "users")
-public class UserEntity implements Serializable {
+public class UserEntity implements Serializable, UserDetails {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -34,6 +36,17 @@ public class UserEntity implements Serializable {
 
     @OneToMany(mappedBy = "client")
     private List<OrderEntity> orderEntities = new ArrayList<>();
+
+    @Setter(AccessLevel.NONE)
+    @OneToMany
+    @JoinTable(name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<RoleEntity> roles = new HashSet<>();
+
+    public List<String> getRoles() {
+        return roles.stream().map(RoleEntity::getName).toList();
+    }
 
     @Override
     public int hashCode() {
@@ -60,4 +73,33 @@ public class UserEntity implements Serializable {
         return true;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
