@@ -26,12 +26,12 @@ public class CreateUserUseCaseTest {
     public void shouldBeAbleToCreateAUserIfEmailNotExists() {
         var user = Instancio.create(User.class);
         when(userRepositoryGateway.create(user)).thenReturn(user);
-        when(userRepositoryGateway.existsByEmail(user.getEmail())).thenReturn(false);
+        when(userRepositoryGateway.existsByEmail(user.email())).thenReturn(false);
 
         var userCreated = createUserUseCase.execute(user);
 
         assertEquals(user, userCreated);
-        verify(userRepositoryGateway).existsByEmail(user.getEmail());
+        verify(userRepositoryGateway).existsByEmail(user.email());
         verify(userRepositoryGateway).create(user);
         verifyNoMoreInteractions(userRepositoryGateway);
     }
@@ -39,11 +39,11 @@ public class CreateUserUseCaseTest {
     @Test
     public void shouldNotBeAbleToCreateAUserIfEmailAlreadyExists() {
         var user = Instancio.create(User.class);
-        when(userRepositoryGateway.existsByEmail(user.getEmail())).thenReturn(true);
+        when(userRepositoryGateway.existsByEmail(user.email())).thenReturn(true);
 
         assertThrows(UserEmailAlreadyExistsException.class, () -> createUserUseCase.execute(user));
 
-        verify(userRepositoryGateway).existsByEmail(user.getEmail());
+        verify(userRepositoryGateway).existsByEmail(user.email());
         verifyNoMoreInteractions(userRepositoryGateway);
     }
 }

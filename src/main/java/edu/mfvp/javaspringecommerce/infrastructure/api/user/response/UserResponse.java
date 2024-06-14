@@ -10,8 +10,8 @@ public record UserResponse(
 ) {
 
     public static UserResponse fromEntity(User user) {
-        return new UserResponse(user.getId(), user.getName(),
-                user.getEmail(), user.getPhone());
+        return new UserResponse(user.id(), user.name(),
+                user.email(), user.phone());
     }
 
 }
