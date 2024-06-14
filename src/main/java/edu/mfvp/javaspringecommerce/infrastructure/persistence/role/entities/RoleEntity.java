@@ -1,4 +1,4 @@
-package edu.mfvp.javaspringecommerce.infrastructure.persistence.role;
+package edu.mfvp.javaspringecommerce.infrastructure.persistence.role.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;

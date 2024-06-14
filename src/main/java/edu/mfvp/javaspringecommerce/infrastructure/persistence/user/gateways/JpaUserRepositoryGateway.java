@@ -7,25 +7,31 @@ import edu.mfvp.javaspringecommerce.domain.user.entities.User;
 import edu.mfvp.javaspringecommerce.domain.user.gateways.UserRepositoryGateway;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.user.mapper.UserMapper;
 import edu.mfvp.javaspringecommerce.infrastructure.persistence.user.repositories.JpaUserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class JpaUserRepositoryGateway implements UserRepositoryGateway {
     private final JpaUserRepository repository;
+    private final PasswordEncoder passwordEncoder;
 
-    public JpaUserRepositoryGateway(JpaUserRepository repository) {
+    public JpaUserRepositoryGateway(JpaUserRepository repository,
+                                    PasswordEncoder passwordEncoder) {
         this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public User create(User user) {
-        var userEntity = repository.save(UserMapper.toUserEntity(user));
-        return UserMapper.toUser(userEntity);
+        var userEntity = UserMapper.toUserEntity(user);
+        userEntity.setPassword(passwordEncoder.encode(user.password()));
+
+        return UserMapper.toUser(repository.save(userEntity));
     }
 
     @Override
     public boolean existsByEmail(String email) {
-        return false;
+        return repository.existsByEmail(email);
     }
 
     @Override
